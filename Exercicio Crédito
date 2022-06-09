@@ -1,0 +1,42 @@
+/*INTEGRANTES
+Bruno Ferreira Benetti
+Camilo Maddalena de Souza
+Gabriel Aragão da Silva
+Ana Paula Macedo
+Allicia Guida Brant
+*/
+
+
+import java.util.Scanner;
+
+public class Exercicio {
+   public static void main(String[] args) {
+        int conta, saldoInicial, itensComprados, creditosIns, limiteCredito, saldoNovo;
+
+    Scanner entrada = new Scanner(System.in);
+    
+        System.out.println("Digite o numero da conta ou -1 para finalizar.");
+            conta = entrada.nextInt();
+        while(conta != -1){
+            System.out.println("Digite o saldo inicial do cliente:");
+                saldoInicial = entrada.nextInt();
+            System.out.println("Digite o total comprado a credito:");
+                itensComprados = entrada.nextInt();
+            System.out.println("Digite o total de creditos do mes:");
+                creditosIns = entrada.nextInt();
+            System.out.println("Digite o limite de credito autorizado:");
+                limiteCredito = entrada.nextInt();
+                    saldoNovo = saldoInicial + itensComprados - creditosIns;
+
+        if (saldoNovo > limiteCredito){
+            System.out.println("Limite de credito excedido.");
+            conta = -1;
+        } else
+            System.out.printf("Limite de credito aprovado. Saldo atual:\n %d \n", saldoNovo);
+            conta = -1;
+        }
+   
+        
+    }
+
+}

@@ -1,0 +1,125 @@
+/*
+Bruno Ferreira Benetti
+Ana Paula Macedo
+Gabriel Aragão da Silva
+Camilo Maddalena de Souza
+Allicia Guida Brant
+*/
+
+
+package Pacote1;
+
+import java.math.*;import java.awt.*;
+import java.util.Scanner;
+import javax.swing.JFrame;
+
+public class controles {
+	
+	
+	public int constpp;
+	public  int conti;
+	
+
+	private double infectados;
+
+	public controles(int tempo) {
+		infectados = mainControles.contInical(1)*Math.exp(mainControles.constantePropor(2)*tempo);	
+		System.out.printf("Numero de infectados: %f \n", infectados);		
+	}
+
+
+	public static int contInical(int conti){
+		return  conti;
+	}
+	public  static int constantePropor(int constpp){
+
+		return constpp;
+	}
+
+
+	
+	public void calc_infectados() {
+		String tempo;
+		Scanner input = new Scanner(System.in);
+		System.out.println("Calcula de infectados e insira o tempo: \n");
+		tempo = input.nextLine();
+
+		while (input.hasNext()){
+			int t = input.nextInt();
+
+			if (t >0 && t <= 24)
+				tempo = "horas";
+			else if (t >24)
+				tempo = "dias";
+			else 
+				tempo = "meses";
+
+			//JFrame frame = new JFrame("Plot infectados");
+			//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+			switch (tempo) {
+
+				case "horas":
+					System.out.printf("Numero de infectados: %f \n", this.contaminacao_horas(t));
+					
+					//plotInfectados(frame.getGraphics());
+					
+					break;
+
+				case "dias":
+					System.out.printf("Numero de infectados: %f \n",this.contaminacao_dias(t))	;
+					
+					//plotInfectados(frame.getGraphics());
+					
+					break;
+
+				case "meses":
+					System.out.printf("Numero de infectados: %f \n", this.contaminacao_meses(t));
+					
+					//plotInfectados(frame.getGraphics());
+					
+					break;
+
+				default:
+					System.out.println("Fora do periodo!\\n");
+					break;
+
+			}
+
+		}		
+
+	}
+	
+
+
+
+	
+
+
+	
+	public double contaminacao_horas(int tempo) {
+		return this.infectados = mainControles.contInical(conti)*Math.exp(mainControles.constantePropor(constpp)*tempo);
+	}
+	public double contaminacao_dias(int tempo) {
+		return this.infectados = mainControles.contInical(conti)*Math.exp(mainControles.constantePropor(constpp)*tempo/24);
+	}
+	public double contaminacao_meses(int tempo) {
+		return this.infectados = mainControles.contInical(conti)*Math.exp(mainControles.constantePropor(constpp)*tempo/360);
+	}
+
+
+
+
+
+
+	//public void plotInfectados(Graphics g) {		
+		//g.drawChars(null, this.constantePropor(constpp), tempo, this.contInical(conti), this.constantePropor(constpp));
+		//plot.drawChar(null, constante_proporcionalidade, tempo, {0}, infectados);		
+
+	//}
+
+
+
+
+}
+

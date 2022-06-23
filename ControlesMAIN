@@ -1,0 +1,25 @@
+/*
+Bruno Ferreira Benetti
+Ana Paula Macedo
+Gabriel Aragão da Silva
+Camilo Maddalena de Souza
+Allicia Guida Brant
+*/
+
+package Pacote1;
+import java.util.*;
+
+public class mainControles{
+  
+    public static int contInical(int conti){
+		return  conti;
+	}
+	public  static int constantePropor(int constpp){
+		return constpp;
+	}
+
+	public static void main(String[] args){
+        controles controles = new controles(1);  
+
+    }
+}

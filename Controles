@@ -8,80 +8,60 @@ Allicia Guida Brant
 
 
 package Pacote1;
-
-import java.math.*;import java.awt.*;
 import java.util.Scanner;
-import javax.swing.JFrame;
 
-public class controles {
-	
-	
-	public int constpp;
-	public  int conti;
+
+public class controles{//Criação da classe controles
 	
 
-	private double infectados;
+	private double infectados;//Variavel do tipo private(para que apenas a classe controles tenha acesso a ela) e double(com casas 6 decimais).
 
-	public controles(int tempo) {
-		infectados = mainControles.contInical(1)*Math.exp(mainControles.constantePropor(2)*tempo);	
-		System.out.printf("Numero de infectados: %f \n", infectados);		
+	public controles(int tempo, int contamina, int constante){//Construtor da classe com parametros de valores definidos na classe main.
+		infectados = contamina*Math.exp(constante*tempo);//Valor atribuido à infectados.
+		System.out.printf("Numero de infectados: %f \n", infectados);//Exibe a variável infectados.
 	}
 
 
-	public static int contInical(int conti){
-		return  conti;
-	}
-	public  static int constantePropor(int constpp){
+	public void calc_infectados (int contamina, int constante){//Método com parametros e void como tipo de retorno.
+		String tempo;//Variavel do tipo String.
+		Scanner input = new Scanner(System.in);//Criação de um scanner, que permite a leitura de dados digitados pelo usuário.
+		System.out.println("Insira o tempo de contaminação: \n");//Solicitação ao usuário para digitar o valor que deseja atribuir a variavel tempo.
+		System.out.println("Insira a contaminacao incial: \n");
+		System.out.println("Insira a constante de proporcionalidade: \n");
+		
+		//hasNext evita que erros aconteçam, ele checa se realmente existe um valor que possa ser utilzado no condicional.
+		while (input.hasNext()){//O que acontece aqui é que enquanto valor puder ser utilizado, o código continuará sendo executado.
+			int t = input.nextInt();//O valor digitado pelo usuário será atribuido à variável t.
+			int conti = input.nextInt();//O valor digitado pelo usuário será atribuido à variável conti.
+			int constpp = input.nextInt();//O valor digitado pelo usuário será atribuido à variável constpp.
 
-		return constpp;
-	}
-
-
-	
-	public void calc_infectados() {
-		String tempo;
-		Scanner input = new Scanner(System.in);
-		System.out.println("Calcula de infectados e insira o tempo: \n");
-		tempo = input.nextLine();
-
-		while (input.hasNext()){
-			int t = input.nextInt();
-
+			//Condicionais
 			if (t >0 && t <= 24)
 				tempo = "horas";
+
 			else if (t >24)
 				tempo = "dias";
+
 			else 
 				tempo = "meses";
 
-			//JFrame frame = new JFrame("Plot infectados");
-			//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+			//Condicional
 			switch (tempo) {
 
 				case "horas":
-					System.out.printf("Numero de infectados: %f \n", this.contaminacao_horas(t));
-					
-					//plotInfectados(frame.getGraphics());
-					
+					System.out.printf("Numero de infectados: %f \n", this.contaminacao_horas(t, conti, constpp));//Exibe o valor retornado pelo metodo contaminacao_horas.
 					break;
 
 				case "dias":
-					System.out.printf("Numero de infectados: %f \n",this.contaminacao_dias(t))	;
-					
-					//plotInfectados(frame.getGraphics());
-					
+					System.out.printf("Numero de infectados: %f \n",this.contaminacao_dias(t, conti, constpp));//Exibe o valor retornado pelo metodo contaminacao_dias.
 					break;
 
 				case "meses":
-					System.out.printf("Numero de infectados: %f \n", this.contaminacao_meses(t));
-					
-					//plotInfectados(frame.getGraphics());
-					
+					System.out.printf("Numero de infectados: %f \n", this.contaminacao_meses(t, conti, constpp));//Exibe o valor retornado pelo metodo contaminacao_meses.
 					break;
 
 				default:
-					System.out.println("Fora do periodo!\\n");
+					System.out.println("Fora do periodo!\\n");//Última opção, caso nenhum dos outros cases seja satisfeito.
 					break;
 
 			}
@@ -89,37 +69,19 @@ public class controles {
 		}		
 
 	}
-	
-
-
 
 	
-
-
-	
-	public double contaminacao_horas(int tempo) {
-		return this.infectados = mainControles.contInical(conti)*Math.exp(mainControles.constantePropor(constpp)*tempo);
-	}
-	public double contaminacao_dias(int tempo) {
-		return this.infectados = mainControles.contInical(conti)*Math.exp(mainControles.constantePropor(constpp)*tempo/24);
-	}
-	public double contaminacao_meses(int tempo) {
-		return this.infectados = mainControles.contInical(conti)*Math.exp(mainControles.constantePropor(constpp)*tempo/360);
+	public double contaminacao_horas(int tempo, int contamina, int constante) {//Método com paramametros de valores definidos na classe main, retorna outro valor atribuido a variavel infectados.
+		return this.infectados = contamina*Math.exp(constante*tempo);
 	}
 
+	public double contaminacao_dias(int tempo, int contamina, int constante) {//Método com paramametros de valores definidos na classe main, retorna outro valor atribuido a variavel infectados.
+		return this.infectados = contamina*Math.exp(constante*tempo/24);
+	}
 
-
-
-
-
-	//public void plotInfectados(Graphics g) {		
-		//g.drawChars(null, this.constantePropor(constpp), tempo, this.contInical(conti), this.constantePropor(constpp));
-		//plot.drawChar(null, constante_proporcionalidade, tempo, {0}, infectados);		
-
-	//}
-
-
-
+	public double contaminacao_meses(int tempo, int contamina, int constante) {//Método com paramametros de valores definidos na classe main, retorna outro valor atribuido a variavel infectados.
+		return this.infectados = contamina*Math.exp(constante*tempo/360);
+	}
 
 }
 
